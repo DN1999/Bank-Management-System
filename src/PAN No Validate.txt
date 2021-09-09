@@ -1,0 +1,58 @@
+How to validate PAN Card number using Regular Expression
+Last Updated : 27 Jan, 2021
+Given string str of alphanumeric characters, the task is to check whether the string is a valid PAN (Permanent Account Number) Card number or not by using Regular Expression.
+The valid PAN Card number must satisfy the following conditions: 
+
+It should be ten characters long.
+The first five characters should be any upper case alphabets.
+The next four-characters should be any number from 0 to 9.
+The last(tenth) character should be any upper case alphabet.
+It should not contain any white spaces.
+
+Approach: This problem can be solved by using Regular Expression. 
+
+Get the string.
+Create a regular expression to validate the PAN Card number as mentioned below:
+regex = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
+Where: 
+[A-Z]{5} represents the first five upper case alphabets which can be A to Z.
+[0-9]{4} represents the four numbers which can be 0-9.
+[A-Z]{1} represents the one upper case alphabet which can be A to Z.
+Match the given string with the regex, in Java, this can be done using Pattern.matcher().
+Return true if the string matches with the given regex, else return false.
+
+ // Function to validate the PAN Card number.
+    public static boolean isValidPanCardNo(String panCardNo)
+    {
+ 
+        // Regex to check valid PAN Card number.
+        String regex = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
+ 
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+ 
+        // If the PAN Card number
+        // is empty return false
+        if (panCardNo == null)
+        {
+            return false;
+        }
+ 
+        // Pattern class contains matcher() method
+        // to find matching between given
+        // PAN Card number using regular expression.
+        Matcher m = p.matcher(panCardNo);
+ 
+        // Return if the PAN Card number
+        // matched the ReGex
+        return m.matches();
+    }
+ 
+
+public static boolean isValidPanNO(String PanNo)
+{
+ // Regex to check valid PAN Card number.
+        String regex = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
+         return PanNo.matches(regex);
+    
+}

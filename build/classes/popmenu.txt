@@ -1,0 +1,49 @@
+public void TeacherPopupMenu(JTable frame)
+    {
+        JMenuItem modify = new JMenuItem("Modify");
+        JMenuItem delete = new JMenuItem("Delete");
+        JMenuItem deleteall = new JMenuItem("Delete All");
+        modify.addActionListener(new ActionListener() {
+            
+        public void actionPerformed(ActionEvent e) {
+        //JOptionPane.showMessageDialog(modify,"Are really wants to modify ");
+        int cVal= JOptionPane.showConfirmDialog(modify, "Are you really wants to Modify record ","",JOptionPane.OK_CANCEL_OPTION);
+        if(cVal==0)
+        {
+         new UpdateTeacher().show();
+         dispose(); 
+        }
+          }
+         });
+      delete.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+                {
+         deleteteacher();
+         connect();
+        }
+          }
+         });
+      deleteall.addActionListener(new ActionListener() {
+            
+          public void actionPerformed(ActionEvent e) {
+          //JOptionPane.showMessageDialog(modify,"Delete all record Succesfully");
+          deleteTeacherAll();
+          }
+         });
+      //add MenuItems
+            PopupMenu1.add(modify);
+            PopupMenu1.add(delete);
+            PopupMenu1.add(deleteall);
+     //How mouse can do action
+            jTable2.addMouseListener(new MouseAdapter() 
+            {
+            public void mouseClicked(MouseEvent me)
+            {
+            if(SwingUtilities.isRightMouseButton(me))
+            {
+                PopupMenu1.show(me.getComponent(),me.getX(),me.getY());
+               PopupMenu1.setPopupSize(150, 100);
+            }
+        }
+     });
+}
